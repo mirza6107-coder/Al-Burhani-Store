@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Al Burhan Store — Create Account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Raleway:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="signup.css" />
+  </head>
+  <body>
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="announcement-bar">
+      <span>✦ Free Shipping on Orders Above RS 500 ✦</span>
+      <span>Premium Collections Now Available</span>
+      <span>✦ Authentic Luxury Guaranteed ✦</span>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+      <nav class="main-nav">
+        <div class="nav-left"></div>
+        <div class="logo">
+          <div class="logo-ornament">✦</div>
+          <h1>AL BURHAN</h1>
+          <div class="logo-subtitle">STORE</div>
+          <div class="logo-ornament">✦</div>
+        </div>
+        <div class="nav-right"></div>
+      </nav>
+
+      <div class="nav-divider">
+        <span class="divider-line"></span>
+        <span class="divider-gem">◆</span>
+        <span class="divider-line"></span>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="../Home/burhani.php">Home</a></li>
+        <li><a href="../Perfumes/Perfumes.php">Perfumes</a></li>
+        <li><a href="../Watches/Watches.php">Watches</a></li>
+        <li><a href="../Dress/dress.php">Dress</a></li>
+        <li><a href="../Sunglasses/glasses.php">Sunglasses</a></li>
+        <li><a href="../Contact US/ContactUs.php">Contact Us</a></li>
+      </ul>
+    </header>
+
+    <!-- SIGNUP SECTION -->
+    <section class="signup-section">
+      <div class="signup-overlay"></div>
+
+      <!-- Particles -->
+      <div class="signup-particles">
+        <span class="particle p1">✦</span>
+        <span class="particle p2">◆</span>
+        <span class="particle p3">✦</span>
+        <span class="particle p4">◆</span>
+        <span class="particle p5">✦</span>
+      </div>
+
+      <div class="signup-wrapper">
+        <!-- Left brand panel (hidden on mobile) -->
+        <div class="signup-brand">
+          <div class="brand-tag">
+            <span class="tag-line"></span>
+            <span>Join The Elite</span>
+            <span class="tag-line"></span>
+          </div>
+          <div class="brand-title">AL BURHAN</div>
+          <div class="brand-accent">MEMBERS</div>
+
+          <p class="brand-desc">
+            Unlock exclusive access to curated luxury<br />
+            collections, early releases & members-only offers.
+          </p>
+
+          <div class="brand-divider">
+            <span class="brand-divider-line"></span>
+            <span class="brand-divider-gem">✦ ◆ ✦</span>
+            <span class="brand-divider-line right"></span>
+          </div>
+
+          <ul class="brand-perks">
+            <li><i class="fas fa-star"></i> Early access to new arrivals</li>
+            <li><i class="fas fa-tag"></i> Exclusive member discounts</li>
+            <li><i class="fas fa-shipping-fast"></i> Free express shipping</li>
+            <li><i class="fas fa-gift"></i> Birthday luxury surprise</li>
+          </ul>
+        </div>
+
+        <!-- Form card -->
+        <div class="form-card">
+          <div class="form-header">
+            <div class="form-eyebrow">✦ New Member ✦</div>
+            <div class="form-title">Create Account</div>
+            <p class="form-subtitle">Join the world of curated excellence</p>
+          </div>
+
+          <form class="luxury-form" action="signup.php" method="POST">
+            <div class="form-row">
+              <div class="field">
+                <input
+                  type="text"
+                  name="firstname"
+                  id="firstname"
+                  placeholder=" "
+                  required
+                />
+                <label for="firstname">First Name</label>
+              </div>
+              <div class="field">
+                <input
+                  type="text"
+                  name="lastname"
+                  id="lastname"
+                  placeholder=" "
+                  required
+                />
+                <label for="lastname">Last Name</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder=" "
+                required
+              />
+              <label for="email">Email Address</label>
+            </div>
+
+            <div class="field">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder=" "
+                required
+              />
+              <label for="password">Password</label>
+              <div class="password-strength" id="strengthBars">
+                <span class="strength-bar"></span>
+                <span class="strength-bar"></span>
+                <span class="strength-bar"></span>
+                <span class="strength-bar"></span>
+              </div>
+            </div>
+
+            <div class="field">
+              <input
+                type="password"
+                name="confirmpassword"
+                id="confirmpassword"
+                placeholder=" "
+                required
+              />
+              <label for="confirmpassword">Confirm Password</label>
+            </div>
+
+            <div class="form-divider">
+              <span class="form-divider-line"></span>
+              <span class="form-divider-gem">◆</span>
+              <span class="form-divider-line"></span>
+            </div>
+
+            <button type="submit" class="btn-submit">
+              <span>Create My Account</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+
+            <p class="form-footer">
+              Already a member? &nbsp;
+              <a href="../login/login.html">Sign In</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-top">
+        <div class="footer-logo-area">
+          <div class="footer-ornament">✦ ◆ ✦</div>
+          <h2>AL BURHAN</h2>
+          <p class="footer-tagline">Curated Excellence Since 2020</p>
+          <div class="footer-ornament">✦ ◆ ✦</div>
+        </div>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3><span class="col-gem">◆</span> Contact Us</h3>
+          <ul>
+            <li><i class="fas fa-phone"></i> +92 342 936 8829</li>
+            <li><i class="fab fa-whatsapp"></i> +92 331 652 2672</li>
+            <li><i class="fas fa-map-marker-alt"></i> Pakistan</li>            <li><i class="fas fa-envelope"></i> info@alburhan.com</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3><span class="col-gem">◆</span> Quick Links</h3>
+          <ul>
+            <li><a href="../Perfumes/Perfumes.php">Perfumes</a></li>
+            <li><a href="../Watches/Watches.php">Watches</a></li>
+            <li><a href="../Dress/dress.php">Dress</a></li>
+            <li><a href="../Sunglasses/glasses.php">Sunglasses</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3><span class="col-gem">◆</span> Customer Care</h3>
+          <ul>
+            <li><a href="#">FAQ & Help Center</a></li>
+            <li><a href="#">Track Your Order</a></li>
+            <li><a href="#">Returns & Refunds</a></li>
+            <li><a href="#">Size Guide</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3><span class="col-gem">◆</span> Follow Us</h3>
+          <div class="social-icons">
+            <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+          </div>
+          <div class="newsletter">
+            <p>Join our exclusive list</p>
+            <div class="newsletter-form">
+              <input type="email" placeholder="Your email" />
+              <button><i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-line"></div>
+        <div class="copyright">
+          <span>© 2026 Al Burhan Store. All Rights Reserved.</span>
+          <span class="sep">✦</span>
+          <span>Crafted with excellence</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="signup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed — Al Burhan Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --accent: #c9a96e;
+            --accent-light: #e0c994;
+            --success: #2ecc71;
+            --success-dark: #27ae60;
+            --bg: #f8f7f4;
+            --card: #ffffff;
+            --text: #2c2c2c;
+            --text-light: #7a7a7a;
+            --border: #e8e5df;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Subtle background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(201,169,110,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 60% 80%, rgba(26,26,46,0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .confirmation-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 580px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* ── Animated Checkmark ── */
+        .check-circle {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--success), var(--success-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow:
+                0 8px 30px rgba(46,204,113,0.3),
+                0 0 0 8px rgba(46,204,113,0.08);
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        @keyframes popIn {
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .check-circle i {
+            font-size: 50px;
+            color: #fff;
+            animation: checkDraw 0.4s 0.4s ease forwards;
+            opacity: 0;
+            transform: scale(0.5);
+        }
+
+        @keyframes checkDraw {
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* ── Main Card ── */
+        .card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 45px 40px;
+            box-shadow:
+                0 4px 20px rgba(0,0,0,0.06),
+                0 20px 60px rgba(0,0,0,0.04);
+            border: 1px solid var(--border);
+            animation: slideUp 0.6s 0.2s ease forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .card .subtitle {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        /* ── Order Details ── */
+        .order-details {
+            background: var(--bg);
+            border-radius: 14px;
+            padding: 25px 28px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border);
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .detail-row:not(:last-child) {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .detail-row .label {
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-row .value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .detail-row .value.order-ref {
+            font-family: 'Poppins', monospace;
+            color: var(--accent);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .detail-row .value.total-amount {
+            color: var(--success-dark);
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        /* ── Info Box ── */
+        .info-box {
+            background: linear-gradient(135deg, rgba(201,169,110,0.08), rgba(201,169,110,0.03));
+            border: 1px solid rgba(201,169,110,0.2);
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            text-align: left;
+        }
+
+        .info-box i {
+            color: var(--accent);
+            font-size: 18px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .info-box p {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.65;
+        }
+
+        .info-box p strong {
+            color: var(--text);
+        }
+
+        /* ── Buttons ── */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #16213e);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(26,26,46,0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26,26,46,0.35);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(201,169,110,0.04);
+        }
+
+        /* ── Confetti Particles ── */
+        .confetti-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 999;
+            overflow: hidden;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            opacity: 0;
+            animation: confettiFall 3s ease forwards;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                opacity: 1;
+                transform: translateY(-10vh) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(110vh) rotate(720deg);
+            }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 520px) {
+            .card {
+                padding: 30px 22px;
+            }
+
+            .card h1 {
+                font-size: 22px;
+            }
+
+            .check-circle {
+                width: 90px;
+                height: 90px;
+            }
+
+            .check-circle i {
+                font-size: 40px;
+            }
+
+            .detail-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <div class="confirmation-wrapper">
+        <div class="check-circle">
+            <i class="fas fa-check"></i>
+        </div>
+
+        <div class="card">
+            <h1>Order Confirmed!</h1>
+            <p class="subtitle">
+                Thank you for shopping with Al Burhan Store.<br>
+                A confirmation email will be sent shortly.
+            </p>
+
+            <div class="order-details">
+                <div class="detail-row">
+                    <span class="label">Order Reference</span>
+                    <span class="value order-ref" id="orderRef">—</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Customer Name</span>
+                    <span class="value" id="custName">—</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Total Paid</span>
+                    <span class="value total-amount" id="totalAmt">—</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Status</span>
+                    <span class="value" style="color: var(--success-dark);">
+                        <i class="fas fa-circle" style="font-size:8px; vertical-align:middle; margin-right:5px;"></i>Pending
+                    </span>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <i class="fas fa-envelope-open-text"></i>
+                <p>
+                    We've received your order and will begin processing it soon.
+                    You'll receive an <strong>email confirmation</strong> with tracking
+                    details once your order ships.
+                </p>
+            </div>
+
+            <div class="btn-group">
+                <a href="../Perfumes/Perfumes.php" class="btn btn-primary">
+                    <i class="fas fa-shopping-bag"></i> Continue Shopping
+                </a>
+                <a href="../Home/burhani.php" class="btn btn-secondary">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ── Read URL Parameters ──
+        const params = new URLSearchParams(window.location.search);
+        const order  = params.get("order")  || "N/A";
+        const name   = params.get("name")   || "Valued Customer";
+        const total  = params.get("total")  || "0.00";
+
+        document.getElementById("orderRef").textContent = order;
+        document.getElementById("custName").textContent = name;
+        document.getElementById("totalAmt").textContent = total;
+
+        // ── Confetti Effect ──
+        function createConfetti() {
+            const container = document.getElementById("confettiContainer");
+            const colors = ["#c9a96e", "#2ecc71", "#1a1a2e", "#e0c994", "#27ae60", "#f39c12", "#e74c3c", "#3498db"];
+
+            for (let i = 0; i < 60; i++) {
+                const piece = document.createElement("div");
+                piece.classList.add("confetti");
+                piece.style.left = Math.random() * 100 + "%";
+                piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                piece.style.animationDelay = Math.random() * 1.5 + "s";
+                piece.style.animationDuration = (2 + Math.random() * 2) + "s";
+                piece.style.width  = (5 + Math.random() * 8) + "px";
+                piece.style.height = (5 + Math.random() * 8) + "px";
+                piece.style.borderRadius = Math.random() > 0.5 ? "50%" : "2px";
+                container.appendChild(piece);
+            }
+
+            // Cleanup after animation
+            setTimeout(() => { container.innerHTML = ""; }, 5000);
+        }
+
+        createConfetti();
+    </script>
+</body>
+</html>
